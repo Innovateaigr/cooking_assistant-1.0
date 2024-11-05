@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+*.pyo
+cooking_env/  # Your virtual environment folder
+.DS_Store
+*.log

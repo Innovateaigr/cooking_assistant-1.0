@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cooking Assistant</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Cooking Assistant</h1>
+        <form id="question-form">
+            <label for="question">Ask a cooking question:</label>
+            <input type="text" id="question" name="question" required>
+            <button type="submit">Ask</button>
+        </form>
+
+        <div id="loading" style="display:none;">Cooking up a response...</div>
+        <div id="answer">Ask me something about cooking!</div>
+
+        <div id="feedback" style="display: none;">
+            <h4>Was this helpful?</h4>
+            <button onclick="sendFeedback('yes')">👍 Yes</button>
+            <button onclick="sendFeedback('no')">👎 No</button>
+        </div>
+
+        <div class="faq">
+            <h2>Common Questions</h2>
+            <ul>
+                <li onclick="setQuestion('What can I use instead of eggs?')">What can I use instead of eggs?</li>
+                <li onclick="setQuestion('How do I sear meat properly?')">How do I sear meat properly?</li>
+                <li onclick="setQuestion('How do I make a quick pasta sauce?')">How do I make a quick pasta sauce?</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function setQuestion(question) {
+            document.getElementById("question").value = question;
+        }
+
+        document.getElementById("question-form").addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const question = document.getElementById("question").value;
+            
+            document.getElementById("loading").style.display = "block";
+            document.getElementById("answer").innerText = "";
+            document.getElementById("feedback").style.display = "none";
+
+            const response = await fetch("/get_answer", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ question: question }),
+            });
+
+            const data = await response.json();
+            document.getElementById("loading").style.display = "none";
+            document.getElementById("answer").innerText = data.answer;
+            document.getElementById("feedback").style.display = "block";
+        });
+
+        function sendFeedback(response) {
+            alert("Thank you for your feedback!");
+            document.getElementById("feedback").style.display = "none";
+        }
+    </script>
+</body>
+</html>

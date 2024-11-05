@@ -1,0 +1,27 @@
+[
+  {
+      "topic": "substitution",
+      "question": "What can I use instead of eggs?",
+      "answer": "You can use applesauce, mashed bananas, yogurt, or ground flaxseed mixed with water."
+  },
+  {
+      "topic": "recipe",
+      "question": "How do I make a quick pasta sauce?",
+      "answer": "Combine tomatoes, olive oil, garlic, and basil over medium heat until thickened."
+  },
+  {
+      "topic": "cooking_technique",
+      "question": "How do I sear meat properly?",
+      "answer": "Pat the meat dry, season it, and cook on high heat in a preheated pan with a bit of oil."
+  },
+  {
+      "topic": "substitution",
+      "question": "What can I use instead of butter?",
+      "answer": "You can use olive oil, coconut oil, or applesauce as a substitute for butter in some recipes."
+  },
+  {
+      "topic": "cooking_technique",
+      "question": "How do I caramelize onions?",
+      "answer": "Cook onions slowly on low heat with a bit of oil, stirring occasionally until golden brown."
+  }
+]
